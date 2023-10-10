@@ -1,0 +1,13 @@
+class News
+{
+	int nno;
+	String poster,title,subject,date,company;
+}
+public class MainClass_2 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
