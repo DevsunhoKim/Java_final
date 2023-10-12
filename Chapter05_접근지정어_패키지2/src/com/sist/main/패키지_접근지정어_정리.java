@@ -115,6 +115,16 @@ package com.sist.main;
  *     =분리
  *       서버단 : 데이터를 관리하는
  *       클라이언트단 : 화면 출력 => MainClass => JSP
+ *       
+ *       p118 클래스 구조
+ *       p122 객체 생성
+ *       p123 객체 사용
+ *       p127 접근지정어
+ *       p132 패키지
+ *       p136 import
+ *       p140 메소드
+ *       p152 getter/setter
+ *       p166 생성자
  *             
  */
 public class 패키지_접근지정어_정리 {
