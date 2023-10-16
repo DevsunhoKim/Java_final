@@ -73,7 +73,7 @@ public class GenieMusicSystem {
 			 *   String[] arr={"aaa","bbb","ccc","ddd"};
 			 *   arr[i]
 			 */
-			Elements
+			
 		}catch (Exception ex) {}
 	}
 	
