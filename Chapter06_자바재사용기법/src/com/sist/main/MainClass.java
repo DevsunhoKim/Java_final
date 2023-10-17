@@ -55,6 +55,26 @@ package com.sist.main;
  *  
  *  => 포함 : 변경없이 있는 그래도 사용
  *  => 상속 : 변경이 필요한 부분 => 오버라이딩
+ *  
+ *  예)  윈도우 => 자동차 모양으로 윈도우 변경해서 사용
+ *           => 상속
+ *       윈도우 => 사각형으로 사용
+ *           => 포함
+ *           class Login
+ *           {
+ *           	JFrame fr=new JFrame();
+ *              // 메소드에 선언하는 것은 포함 클래스가 아니다
+ *              public void display()
+ *              {
+ *              	JFrame fr=new JFrame(); ==> 지역변수 (포함 클래스 아님)
+ *              }
+ *           }
+ *           
+ *           Login log=new Login();
+ *           log.fr.메소드();
+ *           
+ *           ==> 포함 클래스가 많다
+ *     
  */
 public class MainClass {
 
