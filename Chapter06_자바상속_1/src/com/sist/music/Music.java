@@ -1,6 +1,10 @@
 package com.sist.music;
-//사용자 정의 데이터형 => 캡슐화
+//사용자 정의 데이터형 => 캡슐화 
 public class Music {
+    private int mno;
+    private String title;
+    private String singer;
+    private String album;
 	public int getMno() {
 		return mno;
 	}
@@ -25,9 +29,5 @@ public class Music {
 	public void setAlbum(String album) {
 		this.album = album;
 	}
-	private int mno;
-	private String title;
-	private String singer;
-	private String album;
-	
+	  
 }
