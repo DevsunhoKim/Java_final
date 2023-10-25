@@ -25,6 +25,7 @@ import java.util.*;
  *               =>  읽기 기능 => get()
  *               =>  총갯수 => size()
  *               =>  추가 => add()
+ *               => 실제 수정 => 오라클에서 수정,삭제,추가
  *   
  */
 public class StudentManager {
