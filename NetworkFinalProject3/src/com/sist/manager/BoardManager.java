@@ -50,6 +50,7 @@ public class BoardManager {
 	    */
 	   // 오라클 => 인라인뷰 
 	   // MySQL => LIMIT 
+	   
 	   for(int i=0;i<bList.size();i++)
 	   {
 		   if(j<10 && i>=pagecnt)

@@ -19,12 +19,12 @@ public class ClientMainForm3 extends JFrame implements ActionListener{
 			logo.setBounds(10, 15, 200, 200);
 			logo.setIcon(new ImageIcon(ImageChange.getImage(new ImageIcon("c:\\javaDev\\logo3.png"), 200, 200)));
 			add(logo);
-			mp.setBounds(10, 230, 200, 300);
+			mp.setBounds(10, 200, 200, 300);
 			add(mp);
 			
-			cp.setBounds(230, 15, 830, 710);
+			cp.setBounds(230, 15, 1100, 800);
 			add(cp);
-			setSize(1100, 768);
+			setSize(1280, 800);
 			//setVisible(true);
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
 			

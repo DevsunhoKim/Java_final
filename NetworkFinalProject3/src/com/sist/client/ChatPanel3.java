@@ -20,7 +20,7 @@ public class ChatPanel3 extends JPanel{
 		table1=new JTable(model1);
 		JScrollPane js1=new JScrollPane(table1);
 		
-		js1.setBounds(10, 15, 450, 350);
+		js1.setBounds(10, 15, 500, 400);
 		add(js1);
 		
 		setLayout(null);
@@ -31,18 +31,18 @@ public class ChatPanel3 extends JPanel{
 		table2=new JTable(model1);
 		JScrollPane js2=new JScrollPane(table2);
 		
-		js2.setBounds(10, 375, 450, 250);
+		js2.setBounds(10, 425, 500, 300);
 		add(js2);
 		
 		pane=new JTextPane();
 		JScrollPane js3=new JScrollPane(pane);
 		pane.setEditable(false);
 		
-		js3.setBounds(470, 15, 400, 310);
+		js3.setBounds(520, 15, 490, 360);
 		add(js3);
 		
 		tf=new JTextField();
-		tf.setBounds(470, 330, 400, 30);
+		tf.setBounds(520, 380, 490, 35);
 		add(tf);
 		
 		b1=new JButton("방만들기");
@@ -60,7 +60,7 @@ public class ChatPanel3 extends JPanel{
 		p.add(b4);
 		p.add(b5);
 		p.add(b6);
-		p.setBounds(470, 370, 380, 200);
+		p.setBounds(520, 425, 490 ,200 );
 		add(p);
 	}
 }
