@@ -42,7 +42,7 @@ public class ChatPanel3 extends JPanel{
 		add(js3);
 		
 		tf=new JTextField();
-		tf.setBounds(520, 380, 490, 35);
+		tf.setBounds(520, 330, 490, 35);
 		add(tf);
 		
 		b1=new JButton("방만들기");

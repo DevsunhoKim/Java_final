@@ -10,7 +10,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import com.sist.manager.BoardManager;
+import com.sist.manager.BoardManager3;
 import com.sist.vo.BoardVO;
 
 import java.awt.*;
@@ -112,7 +112,7 @@ implements ActionListener
 				return;
 			}
 			
-			BoardManager bm=new BoardManager();
+			BoardManager3 bm=new BoardManager3();
 			BoardVO vo=new BoardVO();
 			vo.setNo(bm.boardSequence());
 			vo.setName(name);

@@ -12,7 +12,7 @@ import com.sist.manager.*;
 import java.util.*;
 import java.text.*;
 public class BoardListPanel extends JPanel
-implements ActionListener
+implements ActionListener,MouseListener
 {
 	JLabel la,pageLa;
 	JButton b1,b2,b3,b4;
@@ -43,7 +43,7 @@ implements ActionListener
     	table.getTableHeader().setReorderingAllowed(false);
     	table.setShowVerticalLines(false);
     	table.setRowHeight(40);
-    	
+    	table.getTableHeader().setPreferredSize(new Dimension(35,35));
     	table.getColumn("번호").setPreferredWidth(30);
     	table.getColumn("제목").setPreferredWidth(400);
     	table.getColumn("이름").setPreferredWidth(100);
@@ -74,9 +74,8 @@ implements ActionListener
     	add(js);
     	
     	JPanel p=new JPanel();
-    	p.add(b2);
-    	p.add(pageLa);
     	p.add(b3);
+    	p.add(pageLa);
     	p.add(b4);
     	
     	p.setBounds(10, 570, 710, 35);
@@ -84,8 +83,10 @@ implements ActionListener
     	
     	// 이벤트 
     	b1.addActionListener(this);
-    	b3.addActionListener(this);
-    	b4.addActionListener(this);
+    	b3.addActionListener(this);// 이전 
+    	b4.addActionListener(this);// 다음
+    	table.addMouseListener(this);
+    	// this=> 처리하는 메소드 위치 => 클래스 내부 존재 
     	boardList();
     }
     public void boardList()
@@ -98,7 +99,7 @@ implements ActionListener
     	ArrayList<BoardVO> list=bm.boardListData(curpage);
     	totalPage=bm.boardTotalPage();
     	pageLa.setText(curpage+" page / "+totalPage+" pages");
-    	for(int i=list.size()-1;i>=0;i--)
+    	for(int i=0;i<list.size();i++)
     	{
     		BoardVO vo=list.get(i);
     		String[] data= {
@@ -139,5 +140,62 @@ implements ActionListener
 				boardList();
 			}
 		}
+	}
+	@Override
+	public void mouseClicked(MouseEvent e) {
+		// TODO Auto-generated method stub
+		// 더블 클릭시에 => 상세보기 
+		if(e.getSource()==table)
+		{
+			if(e.getClickCount()==2)//더블 클릭 
+			{
+				// 게시물 번호 가지고 오기 
+				int row=table.getSelectedRow();
+				String no=model.getValueAt(row, 0).toString();
+				//JOptionPane.showMessageDialog(this, no);
+				// => 윈도우 , 웹 => 클라이언트(전송):서버(응답)
+				// =>              ------------ --------
+				//                   문자열       해당 데이터형으로 변경 
+				//                               Wrapper
+				/*
+				 *      오라클 => 숫자 (NUMBER) => int , long , double
+				 *               문자열 (VARCHAR2) => String
+				 *               날짜 (DATE) => Date
+				 */
+				BoardVO vo=bm.boardDetailData(Integer.parseInt(no));
+				cp.bdp.noLa.setText(no);
+				cp.bdp.nameLa.setText(vo.getName());
+				cp.bdp.subLa.setText(vo.getSubject());
+				// 화면 출력시에 => 데이터형이 없다 (문자열 출력)
+				/*
+				 *   String => String.valueOf() => 기본형 
+				 *   Object => toString()
+				 */
+				cp.bdp.hitLa.setText(String.valueOf(vo.getHit()));
+				cp.bdp.pane.setText(vo.getContent());
+				cp.bdp.dateLa.setText(new SimpleDateFormat("yyyy-MM-dd").format(vo.getRegdate()));
+				cp.card.show(cp, "detail");
+			}
+		}
+	}
+	@Override
+	public void mousePressed(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 }

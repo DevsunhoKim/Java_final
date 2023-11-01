@@ -16,7 +16,7 @@ public class MainClass_4 {
 			int k=1;
 			for(int i=1;i<=5;i++)
 			{	
-				Document doc=Jsoup.connect("https://www.yes24.com/Product/Category/BestSeller?categoryNumber=001&pageNumber="+i+"&pageSize=24").get();
+				Document doc=Jsoup.connect("https://www.yes24.com/Product/Category/BestSeller?categoryNumber=001&pageNumber="+i).get();
 				Elements link=doc.select("div.itemUnit span.img_grp a");
 			
 			for(int j=0;j<link.size();j++)
@@ -31,16 +31,17 @@ public class MainClass_4 {
 					Element title=doc2.selectFirst("h2.gd_name");
 					System.out.println(title.text());
 					
-					//작가
-					Element author=doc2.selectFirst("span.gd_pubArea span.gd_auth");
-					System.out.println(author.text());
+					// 작가
+					Element author=doc2.selectFirst("span.gd_pubArea span.gd_auth a");
+					System.out.println(author.attr("href"));
+					
 					
 					//출판사
 					Element publ=doc2.selectFirst("span.gd_pub");
 					System.out.println(publ.text());
 					
-					//평점
-					Element score=doc2.selectFirst("span.gd_rating");
+					// 평점
+					Element score=doc2.selectFirst("span.gd_ratingArea em.yes_b");
 					System.out.println(score.text());
 					
 					//가격

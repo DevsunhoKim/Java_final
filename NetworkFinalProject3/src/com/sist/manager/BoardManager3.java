@@ -6,7 +6,7 @@ import com.sist.vo.BoardVO;
 
 import java.text.*; // SimpleDateFormat
 import java.io.*;// File관련 => ObjectInputStream/ObjectOutputStream
-public class BoardManager {
+public class BoardManager3 {
    // 게시물 목록 => 모아서 관리 
    private static ArrayList<BoardVO> bList=
 		            new ArrayList<BoardVO>();

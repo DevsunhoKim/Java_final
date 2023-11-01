@@ -1,72 +1,81 @@
 package com.sist.client;
-
 import javax.swing.*;
 
 import com.sist.common.ImageChange;
+import com.sist.manager.FoodManager;
+import com.sist.vo.FoodCategoryVO;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 /*
- *   FlowLayout: JPanel
- *      ---------------
- *        버튼  버튼...
- *      ---------------
+ *   FlowLayout : JPanel 
+ *      --------------
+ *        버튼  버튼 ....
+ *      --------------
  *   GridLayout
- *      ---------------
- *        버튼 버튼 버튼
- *        버튼 버튼 버튼
- *      ---------------
- *   BorderLayout
- *      ---------------
- *           North
- *      ---------------
- *        |         |
- *  East  |         |  West
- *        |         |
- *          Center
- *      ---------------
- *           South
- *      ---------------
- *   CardLayout: 감춘다 
+ *      --------------
+ *        버튼 버튼 버튼 
+ *        버튼 버튼 버튼 
+ *      -------------
+ *   BorderLayout => JFrame
+ *      ------------
+ *         North
+ *      ------------
+ *         |     |
+ *  East   |     |  West
+ *         |     |
+ *           Center
+ *      ------------
+ *        South
+ *      ------------
+ *   CardLayout : 감춘다 => 
  */
 public class ClientMainForm extends JFrame implements ActionListener{
-	MenuPanel mp=new MenuPanel();
-	ControllPanel cp=new ControllPanel();
-	JLabel logo=new JLabel();
-	Login login=new Login();
-	public ClientMainForm()
-	{
-		setLayout(null); // 직접 배치
-		logo.setBounds(10, 15, 120, 120);
-		logo.setIcon(new ImageIcon(ImageChange.getImage(new ImageIcon("c:\\javaDev\\logo.png"), 100, 150)));
-		add(logo);
-		mp.setBounds(10, 175, 120, 250);
-		add(mp);
-		
-		cp.setBounds(135, 15, 865, 705);
-		add(cp);
-		setSize(1025, 768);
-		//setVisible(true);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		
-		// 등록
-		mp.b1.addActionListener(this);
-		mp.b2.addActionListener(this);
-		mp.b3.addActionListener(this);
-		mp.b4.addActionListener(this);
-		mp.b5.addActionListener(this);
-		mp.b6.addActionListener(this);
-		
-		login.b1.addActionListener(this);
-	}
+    MenuPanel mp=new MenuPanel();
+    ControllPanel cp=new ControllPanel();
+    JLabel logo=new JLabel();
+    Login login=new Login();
+    FoodManager fm=new FoodManager();
+    public ClientMainForm()
+    {
+    	setLayout(null); // 직접 배치
+    	logo.setBounds(10, 15, 120, 120);
+    	logo.setIcon(new ImageIcon(ImageChange.getImage(
+    			new ImageIcon("c:\\javaDev\\logo.jpg"), 120, 120)));
+    	add(logo);
+    	mp.setBounds(10, 175, 120, 250);
+    	add(mp);
+    	
+    	cp.setBounds(135, 15, 865, 705);
+    	add(cp);
+    	setSize(1025, 768);
+    	//setVisible(true);
+    	setDefaultCloseOperation(EXIT_ON_CLOSE);
+    	setResizable(false);
+    	// 등록 
+    	mp.b1.addActionListener(this);
+    	mp.b2.addActionListener(this);
+    	mp.b3.addActionListener(this);
+    	mp.b4.addActionListener(this);
+    	mp.b5.addActionListener(this);
+    	mp.b6.addActionListener(this);
+    	
+    	login.b1.addActionListener(this);
+    	
+    	ArrayList<FoodCategoryVO> list=fm.foodCategoryData(1);
+    	//cp.hp.cardInit();
+    	cp.hp.cardPrint(list);
+    			
+    }
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		try
 		{
 			UIManager.setLookAndFeel("com.jtattoo.plaf.mcwin.McWinLookAndFeel");
 		}catch(Exception ex) {}
-		new ClientMainForm();
+        new ClientMainForm();
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -97,7 +106,7 @@ public class ClientMainForm extends JFrame implements ActionListener{
 		}
 		else if(e.getSource()==login.b1)
 		{
-			// 서버 연결
+			// 서버연결 
 			login.setVisible(false);
 			setVisible(true);
 		}
