@@ -1,13 +1,17 @@
 package com.sist.vo;
-// 1|트렌드 코리아 2024|김난도|https://image.yes24.com/goods/122426425/L|미래의창|9.6|판매가 17,100원 (10% 할인)
-public class FoodHouseVO3 {
+
+public class BookHouseVO3 {
+	
 	private int fno;
+	//private int cno;
 	private String name;
 	private String author;
 	private String poster;
 	private String publ;
-	private Double score;
-	private String price;
+	private double score;
+	//private String price;
+	
+	
 	public int getFno() {
 		return fno;
 	}
@@ -38,18 +42,10 @@ public class FoodHouseVO3 {
 	public void setPubl(String publ) {
 		this.publ = publ;
 	}
-	public Double getScore() {
+	public double getScore() {
 		return score;
 	}
-	public void setScore(Double score) {
+	public void setScore(double score) {
 		this.score = score;
 	}
-	public String getPrice() {
-		return price;
-	}
-	public void setPrice(String price) {
-		this.price = price;
-	}
-	
-	
 }

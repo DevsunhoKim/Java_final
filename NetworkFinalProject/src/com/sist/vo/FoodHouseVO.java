@@ -1,4 +1,7 @@
 package com.sist.vo;
+
+
+
 /*
  *  1|1|가양칼국수버섯매운탕|4.3|
  *  서울특별시 영등포구 국제금융로 78 홍우빌딩 B1 지번 서울시 
@@ -9,7 +12,8 @@ package com.sist.vo;
 
  */
 public class FoodHouseVO {
-   private int fno;
+	 
+	private int fno;
    private int cno;// category 참조 번호 
    // foreign key
     private String name;

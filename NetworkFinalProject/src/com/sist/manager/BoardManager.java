@@ -17,7 +17,7 @@ public class BoardManager {
 	   ObjectInputStream ois=null;
 	   try
 	   {
-		   fis=new FileInputStream("c:\\java_data\\board.txt");
+		   fis=new FileInputStream("c:\\java_data\\board1.txt");
 		   ois=new ObjectInputStream(fis);
 		   bList=(ArrayList<BoardVO>)ois.readObject();
 	   }catch(Exception ex)
@@ -81,7 +81,7 @@ public class BoardManager {
 			   
 	   try
 	   {
-		   fos=new FileOutputStream("c:\\java_data\\board.txt");
+		   fos=new FileOutputStream("c:\\java_data\\board1.txt");
 		   oos=new ObjectOutputStream(fos);
 		   oos.writeObject(bList);
 	   }catch(Exception ex)

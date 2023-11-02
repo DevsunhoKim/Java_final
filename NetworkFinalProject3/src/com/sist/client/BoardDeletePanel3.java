@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import com.sist.vo.*;
 import com.sist.manager.*;
+
 public class BoardDeletePanel3 extends JPanel implements ActionListener{
 	ControllPanel3 cp;// 화면 변경 
     JLabel titleLa;
@@ -15,7 +16,7 @@ public class BoardDeletePanel3 extends JPanel implements ActionListener{
     {
     	this.cp=cp;
     	titleLa=new JLabel("삭제하기");
-    	titleLa.setFont(new Font("맑은 고딕",Font.BOLD,45));
+    	titleLa.setFont(new Font("맑은 고딕",Font.BOLD,35));
     	titleLa.setHorizontalAlignment(JLabel.CENTER);
     	
     	la=new JLabel("비밀번호");
@@ -46,36 +47,28 @@ public class BoardDeletePanel3 extends JPanel implements ActionListener{
 		// TODO Auto-generated method stub
 		if(e.getSource()==b2)
 		{
-			cp.card.show(cp, "detial");
-			// 이전 화면=> history.back()
+			cp.card.show(cp, "detail");
 		}
 		else if(e.getSource()==b1)
 		{
-			// 1. 번호 => la1
 			String no=la1.getText();
-			// 2. 비밀번호
 			String pwd=String.valueOf(pf.getPassword());
 			if(pwd.trim().length()<1)
 			{
-				JOptionPane.showMessageDialog(this,"비밀번호를 입력하세요");
+				JOptionPane.showMessageDialog(this, "비밀번호를 입력하세요");  //JavaScript : alert()
 				pf.requestFocus();
 				return;
 			}
 			// => 비밀번호 확인
 			String res=bm.boardDelete(Integer.parseInt(no), pwd);
-			// 웹 => 출력시 문자열 , 처리시 정수형
-			// String.valueOf()  Integer.parseInt()
-			// 웹에서 3대 클래스 => ArrayList,Integer,String
 			if(res.equals("YES"))
 			{
-				//목록으로 이동
-				cp.blp.boardList(); // 변경된 내용을 다시 읽어 온다
+				cp.blp.boardList();
 				cp.card.show(cp, "board");
 			}
 			else if(res.equals("NO"))
 			{
-				// 비밀번호 다시 입력 요청
-				JOptionPane.showMessageDialog(this, "비밀번호가 틀립니다!!");
+				JOptionPane.showMessageDialog(this, "비밀번호가 틀립니다");
 				pf.setText("");
 				pf.requestFocus();
 			}

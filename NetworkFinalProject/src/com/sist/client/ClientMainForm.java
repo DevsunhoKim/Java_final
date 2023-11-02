@@ -3,7 +3,10 @@ import javax.swing.*;
 
 import com.sist.common.ImageChange;
 import com.sist.manager.FoodManager;
+import com.sist.vo.*;
 import com.sist.vo.FoodCategoryVO;
+import com.sist.manager.*;
+
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -43,7 +46,7 @@ public class ClientMainForm extends JFrame implements ActionListener{
     	setLayout(null); // 직접 배치
     	logo.setBounds(10, 15, 120, 120);
     	logo.setIcon(new ImageIcon(ImageChange.getImage(
-    			new ImageIcon("c:\\javaDev\\logo.jpg"), 120, 120)));
+    			new ImageIcon("c:\\javaDev\\logo3.jpg"), 120, 120)));
     	add(logo);
     	mp.setBounds(10, 175, 120, 250);
     	add(mp);
@@ -86,7 +89,7 @@ public class ClientMainForm extends JFrame implements ActionListener{
 		}
 		else if(e.getSource()==mp.b2)
 		{
-			
+			cp.card.show(cp, "find");
 		}
 		else if(e.getSource()==mp.b3)
 		{
