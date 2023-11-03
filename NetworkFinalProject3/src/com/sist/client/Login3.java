@@ -21,7 +21,7 @@ public class Login3 extends JFrame{
 		rb1.setSelected(true);
 		ButtonGroup bg=new ButtonGroup();
 		bg.add(rb1);
-		bg.add(b2);   //그룹 => html에서 그룹 설정을 한다
+		bg.add(rb2);   //그룹 => html에서 그룹 설정을 한다
 		
 		b1=new JButton("로그인");
 		b2=new JButton("취소");

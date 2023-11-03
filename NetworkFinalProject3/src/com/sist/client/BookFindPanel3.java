@@ -6,8 +6,11 @@ import java.awt.*;
 import java.awt.event.*;
 import java.awt.print.Book;
 import java.net.*;
+import java.util.*;
+import java.io.*;
 
 import com.sist.vo.*;
+import com.sist.vo.BoardVO3;
 import com.sist.common.ImageChange3;
 import com.sist.manager.*;
 
@@ -43,7 +46,7 @@ public class BookFindPanel3 extends JPanel implements ActionListener{
 			//Class.forName("")
 		};
 		table=new JTable(model);
-		table.setRowHeight(100);
+		table.setRowHeight(250);
 		JScrollPane js=new JScrollPane(table);
 		
 		//배치
@@ -64,7 +67,7 @@ public class BookFindPanel3 extends JPanel implements ActionListener{
 	{
 		try
 		{
-			ArrayList<BookHouseVO3> list=fm.bookFindData(name);
+			ArrayList<BookHouseVO3> list=fm.BookFindData(name);
 			for(int i=model.getRowCount()-1;i>=0;i--)
 			{
 				model.removeRow(i);
@@ -72,7 +75,7 @@ public class BookFindPanel3 extends JPanel implements ActionListener{
 			for(BookHouseVO3 vo:list)
 			{
 				URL url=new URL(vo.getPoster());
-				Image image=ImageChange3.getImage3(new ImageIcon(url), 90, 90);
+				Image image=ImageChange3.getImage3(new ImageIcon(url), 120, 180);
 				Object[] obj= { new ImageIcon(image)
 								,vo.getName()
 								,vo.getPubl()

@@ -1,6 +1,8 @@
 package com.sist.vo;
 
-public class BookHouseVO3 {
+import java.io.Serializable;
+
+public class BookHouseVO3 implements Serializable{
 	
 	private int fno;
 	//private int cno;
@@ -9,7 +11,7 @@ public class BookHouseVO3 {
 	private String poster;
 	private String publ;
 	private double score;
-	//private String price;
+	private String price;
 	
 	
 	public int getFno() {
@@ -47,5 +49,11 @@ public class BookHouseVO3 {
 	}
 	public void setScore(double score) {
 		this.score = score;
+	}
+	public String getPrice() {
+		return price;
+	}
+	public void setPrice(String price) {
+		this.price = price;
 	}
 }

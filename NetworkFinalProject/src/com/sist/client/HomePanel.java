@@ -1,4 +1,5 @@
 package com.sist.client;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -15,7 +16,7 @@ import javax.swing.*;
 import com.sist.manager.FoodManager;
 import com.sist.vo.FoodCategoryVO;
 import com.sist.vo.FoodHouseVO;
-public class HomePanel extends JPanel implements ActionListener,MouseListener{
+public class HomePanel extends JPanel implements ActionListener, MouseListener{
    JButton b1,b2,b3;
    PosterCard[] pcs=new PosterCard[12];
    FoodManager fm=new FoodManager();
@@ -119,10 +120,9 @@ public class HomePanel extends JPanel implements ActionListener,MouseListener{
 					FoodCategoryVO vo=fm.categoryInfoData(title);
 					cp.fcp.la1.setText(vo.getTitle());
 					cp.fcp.la2.setText(vo.getSubject());
-					ArrayList<FoodHouseVO> list=
-							   fm.foodHouseListData(vo.getCno());
+					ArrayList<FoodHouseVO> list=fm.foodHouseListData(vo.getCno());
 					cp.fcp.foodPrint(list);
-					cp.card.show(cp,"catefood");
+					cp.card.show(cp, "catefood");
 				}
 			}
 		}
