@@ -9,8 +9,8 @@ import java.io.IOException;
 public class ExhibitionCrawler {
 
     public static void main(String[] args) {
-        // Iterate through the page indices from 1 to 2000
-        for (int pageIndex = 1; pageIndex <= 2000; pageIndex++) {
+        // Iterate through the page indices from 800 to 1900
+        for (int pageIndex = 800; pageIndex <= 1900; pageIndex++) {
             String exhibitionUrl = "https://www.showala.com/ex/ex_detail.php?idx=" + pageIndex;
 
             try {
@@ -21,7 +21,6 @@ public class ExhibitionCrawler {
                 if (baInfoUl != null) {
                     String exhibitionName = getValue(baInfoUl, "li.kor_tit");
                     String exhibitionNameEnglish = getValue(baInfoUl, "li.eng_tit");
-                    String exhibitionType = getValue(baInfoUl, "li.ex_type");
                     String exhibitionField = getValue(baInfoUl, "li.work_cate p.des");
                     String exhibitionItems = getValue(baInfoUl, "li.ex_cate p.des");
 
@@ -46,35 +45,33 @@ public class ExhibitionCrawler {
                     String subjectivity = getValue(baInfoUl, "li.found p.des");
                     String support = getValue(baInfoUl, "li.support p.des");
 
-                    // Extract sponsor and sponsorship
-                    String sponsor = getValue(baInfoUl, "li.opener2 p.des");
-                    String sponsorship = getValue(baInfoUl, "li.found p.des");
-
-                    // Output the extracted information
-                    System.out.println("Page Index: " + pageIndex);
-                    System.out.println("Exhibition Name: " + exhibitionName);
-                    System.out.println("Exhibition Name (English): " + exhibitionNameEnglish);
-                    System.out.println("Exhibition Type: " + exhibitionType);
-                    System.out.println("Exhibition Field: " + exhibitionField);
-                    System.out.println("Exhibition Items: " + exhibitionItems);
-                    System.out.println("Homepage: " + homepage);
-                    System.out.println("Start Date: " + startDate);
-                    System.out.println("End Date: " + endDate);
-                    System.out.println("Venue: " + venue);
-                    System.out.println("Detailed Location: " + detailedLocation);
-                    System.out.println("Industry: " + industry);
-                    System.out.println("Image URL: " + imageUrl);
-                    System.out.println("Host: " + host);
-                    System.out.println("Subjectivity: " + subjectivity);
-                    if (support != null && !support.isEmpty()) {
-                        System.out.println("Support: " + support);
+                    // Check if the keywords are present in the relevant fields
+                    if (containsKeyword(exhibitionName, "부산", "busan")
+                            || containsKeyword(exhibitionNameEnglish, "부산", "busan")
+                            || containsKeyword(venue, "벡스코", "bexco")) {
+                        // Output the extracted information
+                        System.out.println("고유번호: " + pageIndex);
+                        System.out.println("전시회명: " + exhibitionName);
+                        System.out.println("영문명: " + exhibitionNameEnglish);
+                        System.out.println("전시 분야: " + exhibitionField);
+                        System.out.println("전시 품목: " + exhibitionItems);
+                        System.out.println("홈페이지: " + homepage);
+                        System.out.println("시작일: " + startDate);
+                        System.out.println("종료일: " + endDate);
+                        System.out.println("개최장소: " + venue);
+                        System.out.println("상세장소: " + detailedLocation);
+                        System.out.println("산업분야: " + industry);
+                        System.out.println("이미지URL: " + imageUrl);
+                        System.out.println("주최: " + host);
+                        System.out.println("주관: " + subjectivity);
+                        if (support != null && !support.isEmpty()) {
+                            System.out.println("Support: " + support);
+                        }
+                  
+                        System.out.println("--------------------------------------");
                     }
-                    System.out.println("Sponsor: " + sponsor);
-                    System.out.println("Sponsorship: " + sponsorship);
-                    System.out.println("--------------------------------------");
-
                 } else {
-                    System.out.println("Error: Could not find ba_info ul for page index " + pageIndex);
+                   // System.out.println("Error: Could not find ba_info ul for page index " + pageIndex);
                 }
 
             } catch (IOException e) {
@@ -88,8 +85,18 @@ public class ExhibitionCrawler {
         if (!selectedElements.isEmpty()) {
             return selectedElements.text();
         } else {
-            System.out.println("Warning: No elements found for selector '" + selector + "'");
+            //System.out.println("Warning: No elements found for selector '" + selector + "'");
             return "";
         }
     }
+    private static boolean containsKeyword(String text, String... keywords) {
+        for (String keyword : keywords) {
+            if (text.toLowerCase().contains(keyword.toLowerCase())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+   
 }
